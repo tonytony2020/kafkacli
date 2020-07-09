@@ -22,7 +22,7 @@ var (
 	brokers    string
 	topic      string
 	groupid    string
-	offset     int64
+	offset     string
 	retryafter int
 	username   string
 	password   string
@@ -37,7 +37,7 @@ func main() {
 	flag.StringVar(&username, "u", "", "username")
 	flag.StringVar(&password, "p", "", "password")
 	flag.IntVar(&retryafter, "r", 15, "retry after n seconds")
-	flag.Int64Var(&offset, "o", kafka.LastOffset, fmt.Sprintf("offset, %d => last, %d => first", kafka.LastOffset, kafka.FirstOffset))
+	flag.StringVar(&offset, "o", "last", fmt.Sprintf("offset first or last"))
 	flag.IntVar(&minbytes, "m", 10e3, "Min number of bytes to fetch from kafka in each request.")
 	flag.IntVar(&maxbytes, "n", 10e6, "Max number of bytes to fetch from kafka in each request.")
 	flag.Parse()
@@ -69,7 +69,12 @@ func main() {
 	r := kafka.NewReader(cfg)
 
 	if groupid == "" {
-		err := r.SetOffset(offset)
+		var err error
+		if offset == "first" {
+			err = r.SetOffset(kafka.FirstOffset)
+		} else if offset == "last" {
+			err = r.SetOffset(kafka.LastOffset)
+		}
 		gutil.ExitOnErr(err)
 	}
 
