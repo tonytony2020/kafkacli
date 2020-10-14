@@ -1,5 +1,10 @@
 # About
 
+![Go](https://github.com/tonytony2020/kafkacli/workflows/Go/badge.svg?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tonytony2020/kafkacli)](https://goreportcard.com/report/github.com/tonytony2020/kafkacli)
+[![LICENSE](https://img.shields.io/github/license/tonytony2020/kafkacli.svg?style=flat-square)](https://github.com/tonytony2020/kafkacli/blob/master/LICENSE)
+
+
 kafkacli is a simple Apache Kafka client for debugging.
 
 features
@@ -7,6 +12,8 @@ features
  - pure golang library 
  - cross-platform supports MS-Windows, macOS and Linux
 
+
+## Building
 
 build binary for Linux on win10
 
@@ -24,7 +31,7 @@ build binary for win10
     
 
 
-Examples
+## Usage
 
 
     Usage of ./kafkacli.bin:
