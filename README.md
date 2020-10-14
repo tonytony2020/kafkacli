@@ -2,6 +2,11 @@
 
 kafkacli is a simple Apache Kafka client for debugging.
 
+features
+ - support SASL/SCRAM authentication mechanism
+ - pure golang library 
+ - cross-platform supports MS-Windows, macOS and Linux
+
 
 build binary for Linux on win10
 
